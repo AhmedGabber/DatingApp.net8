@@ -1,15 +1,17 @@
 using System;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
 namespace API.Controllers;
-[ApiController]
-[Route("api/[Controller]")]//http.../api/Users
-public class UsersController(DataContext context) :ControllerBase
+//http.../api/Users
+[Authorize]
+public class UsersController(DataContext context) :BaseApiController
 {
+    [AllowAnonymous]
     [HttpGet] 
     public async Task<ActionResult<IEnumerable<AppUser>>>GetUsers()
     {
@@ -17,7 +19,7 @@ public class UsersController(DataContext context) :ControllerBase
 
         return users;
     }
-
+       [Authorize]
         [HttpGet("{id}")] //api/Users/2
     public async Task<ActionResult<AppUser>>GetUser(int id)
     {

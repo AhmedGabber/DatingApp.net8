@@ -6,13 +6,13 @@
   }
   
   .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
-    border-bottom: 4px solid #9e9e9e;
+    border-bottom: 4px solid #a6a6a6;
   }
   
   .member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
     border: 0;
     background: none !important;
-    color: #b4b4b4;
+    color: #a6a6a6;
   }
   
   .member-tabset > .nav-tabs > li.open > a > i, .member-tabset > .nav-tabs > li:hover > a > i {
@@ -30,11 +30,11 @@
   
   .member-tabset > .nav-tabs > li.active > a {
     border: 0 !important;
-    color: #a6a6a6;
+    color: #fff;
   }
   
   .member-tabset > .nav-tabs > li.active > a > i {
-    color: #404040;
+    color: #a6a6a6;
   }
   
   .member-tabset > .tab-content {

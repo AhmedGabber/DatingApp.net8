@@ -1,4 +1,5 @@
 using System;
+using System.Security.Claims;
 using API.Data;
 using API.DTOs;
 using API.Entities;
@@ -12,7 +13,7 @@ using SQLitePCL;
 namespace API.Controllers;
 //http.../api/Users
 [Authorize]
-public class UsersController(IUserRepository userRepository) : BaseApiController
+public class UsersController(IUserRepository userRepository,IMapper mapper) : BaseApiController
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
@@ -29,5 +30,26 @@ public class UsersController(IUserRepository userRepository) : BaseApiController
         if (user == null) return NotFound();
 
         return user;
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
+    {
+        var username =User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (username==null)
+        {
+            return BadRequest("no user name found");
+        }
+        var user= await userRepository.GetUserByUsernameAsync(username);
+
+        if (user==null)
+        {
+            return BadRequest("could not find user");
+        }
+         mapper.Map(memberUpdateDto,user);
+        if(await userRepository.SaveAllAsync()) return NoContent();
+
+        return BadRequest("Faild to update the user");
     }
 }

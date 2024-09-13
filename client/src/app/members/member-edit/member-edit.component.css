@@ -1,0 +1,43 @@
+.img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+}
+
+.card-body {
+    padding: 0 25px;
+}
+
+.card-footer {
+    padding: 10px 15px;
+    background-color: #303030;
+    border-top: none;
+}
+
+.custom-alert {
+    border: 2px solid #410101; 
+    border-radius: 10px;       
+    padding: 10px;  
+    background-color: #301818;            
+}
+
+.custom-form {
+    background-color: #303030; 
+    color: #fff;            
+    padding: 15px;         
+    border-radius: 8px;     
+}
+
+.custom-form h4 {
+    color: #fff;            
+}
+
+.custom-form .form-control {
+    background-color: #181d1f; 
+    color: #fff;            
+    border: 1px solid #444; 
+}
+
+.custom-form .form-control::placeholder {
+    color: #aaa;            
+}

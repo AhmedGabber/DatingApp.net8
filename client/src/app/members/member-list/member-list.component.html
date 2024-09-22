@@ -71,20 +71,23 @@
         }
 </div>
 
-<div class="d-flex justify-content-center">
-        <pagination 
-        [boundaryLinks]="true" 
-        [totalItems]="memberService.paginatedResult()?.pagination!.totalItem"
-        [itemsPerPage]="memberService.paginatedResult()?.pagination!.itemPerPage"
-        (pageChanged)="pageChanged($event)"
-        [(ngModel)]="memberService.paginatedResult()?.pagination!.currentPage"
-        [maxSize]="10"
+@if (memberService.paginatedResult()?.pagination) {
+
+        <div class="d-flex justify-content-center">
+                <pagination 
+                [boundaryLinks]="true" 
+                [totalItems]="memberService.paginatedResult()?.pagination!.totalItem"
+                [itemsPerPage]="memberService.paginatedResult()?.pagination!.itemPerPage"
+                (pageChanged)="pageChanged($event)"
+                [(ngModel)]="memberService.paginatedResult()?.pagination!.currentPage"
+                [maxSize]="10"
         previousText="&lsaquo;"
          nextText="&rsaquo;" 
          firstText="&laquo;"
-          lastText="&raquo;">
+         lastText="&raquo;">
         
         </pagination>
 
 </div>
+        }
 

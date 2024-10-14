@@ -5,6 +5,7 @@ using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,7 @@ IPhotoService photoService) : BaseApiController
 
         return Ok(users);
     }
+
     [HttpGet("{username}")] //api/Users/2
     public async Task<ActionResult<MemberDto>> GetUser(string username)
     {
